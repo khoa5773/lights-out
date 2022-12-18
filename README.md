@@ -4,7 +4,7 @@
 ![image](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 
 Try it out:
-https://luciatruden.github.io/lights-out/
+https://khoa5773.github.io/lights-out/
 
 ## About this project
 
