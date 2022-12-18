@@ -1,28 +1,8 @@
-import React, { useState } from "react";
 import './Board.css';
 import Cell from "./Cell";
 
 
-function Board(props) {
-    const { size, chanceLightStartsOn } = props;
-
-    /** randomLight: returns random boolean */
-    function randomLight() {
-        return Math.random() < chanceLightStartsOn;
-    }
-
-    //create size*size matrix state, randomly setting isOn to true/false
-    const lightsGrid = Array.from({ length: size }).map(
-        row => (row =
-            Array.from({ length: size }).map(
-                cell => (cell = randomLight())
-            )
-        )
-
-    )
-
-    const [board, setBoard] = useState({ grid: lightsGrid });
-
+function Board({ board, setBoard, isWon, setIsWon }) {
 
     /** toggleLight: toggles a single light on/off in the state */
     const toggleLight = function (cellIndex) {
@@ -58,7 +38,20 @@ function Board(props) {
 
     /** hasWon: checks if all lights are off */
     function hasWon() {
-        return board.grid.every(row => row.every(cell => !cell))
+        if (board.grid.every(row => row.every(cell => !cell))) {
+            setIsWon(true)
+            setBoard({
+                grid: [
+                    [false, true, false, true, false],
+                    [true, false, true, false, true],
+                    [true, false, false, false, true],
+                    [false, true, false, true, false],
+                    [false, false, true, false, false],
+                ]
+            })
+            return true
+        }
+        return false
     }
 
 
@@ -79,7 +72,7 @@ function Board(props) {
 
     return (
         <div className="Board">
-            {hasWon() ? <div className="Board-hasWon">Congratulations!</div> : gridDisplay}
+            {hasWon() || isWon ? <><div className="Board-hasWon">Congratulations!</div>{gridDisplay}</> : gridDisplay}
         </div>
     )
 }

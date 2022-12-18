@@ -12,6 +12,19 @@
   margin-bottom: 0;
 }
 
+.App-subtitle {
+    /* background-color: white; */
+    display: flex;
+    align-items:center;
+    flex-direction: row;
+    color: wheat;
+}
+
+.App-turnleft {
+    /* color: black; */
+    margin-left: 30px;
+}
+
 .App-orange {
   
   color: orange;
@@ -42,3 +55,7 @@
     text-shadow: none;
   }
 }
+
+.Board {
+    margin-top: 30px;
+  }
